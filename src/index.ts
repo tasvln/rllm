@@ -14,7 +14,7 @@ const messages: CoreMessage[] = [];
 
 async function main() {
   while (true) {
-    const userInput = await terminal.question('Me: ');
+    const userInput = await terminal.question('User: ');
 
     messages.push({ role: 'user', content: userInput });
 
@@ -24,7 +24,7 @@ async function main() {
     });
 
     let fullResponse = '';
-    process.stdout.write('\nAssistant: ');
+    process.stdout.write('\nRLLM: ');
     for await (const delta of result.textStream) {
       fullResponse += delta;
       process.stdout.write(delta);
